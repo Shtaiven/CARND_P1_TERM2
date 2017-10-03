@@ -56,6 +56,7 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   */
 
   // radar
+  // convert to polar
   VectorXd hx = VectorXd(3);
   float px = x_(0);
   float py = x_(1);
@@ -72,6 +73,8 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
     }
   }
   float rho_dot = (px*vx + py*vy) / rho;
+
+  // update ekf
   hx << rho, phi, rho_dot;
   VectorXd y = z - hx;
   MatrixXd Ht = H_.transpose();
