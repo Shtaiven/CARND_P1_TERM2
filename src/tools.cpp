@@ -20,7 +20,6 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
 	// check the validity of the following inputs:
 	//  * the estimation vector size should not be zero
 	//  * the estimation vector size should equal ground truth vector size
-	// ... your code here
     if (!estimations.size() || (ground_truth.size() != estimations.size())) {
         cout << "you are using an empty matrix" << endl;
         return rmse;
@@ -30,20 +29,17 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
     
 	//accumulate squared residuals
 	for(int i=0; i < estimations.size(); ++i) {
-        // ... your code here
 		rmse_temp[i] = estimations[i] - ground_truth[i];
 		rmse_temp[i] = rmse_temp[i].array().pow(2);
 	}
 
 	//calculate the mean
-	// ... your code here
 	cout << rmse_temp[0] << endl;
 	for (int i=0; i < rmse_temp.size(); ++i) {
 	    rmse(i) = rmse_temp[i].sum()/rmse_temp.size();
 	}
 	
 	//calculate the squared root
-	// ... your code here
 	rmse = rmse.array().sqrt();
 	
 	//return the result
